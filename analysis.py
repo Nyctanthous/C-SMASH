@@ -2,6 +2,11 @@ import numpy as np
 import pandas as pd
 import os
 
+from pyclustering.cluster.kmeans import *
+from pyclustering.cluster.center_initializer import kmeans_plusplus_initializer
+
+from multiprocessing import Pool
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -44,6 +49,24 @@ def import_sdss (sdss_filepath: str) -> pd.DataFrame:
     return pd.read_fwf(sdss_filepath, widths=sdss_colwidths, sep='\t',
                        header=None, names=list(sdss_datatypes.keys()),
                        dtype=sdss_datatypes)
+
+def import_tax (tax_filepath: str) -> pd.DataFrame:
+    tax_datatypes = {'AST_NUMBER': np.int32, 'AST_NAME': str,
+                     'PROV_ID': str, 'CLASSIFICATION': str,
+                     'SCORE': np.int32, 'NCLASS': np.int32,
+                     'METHOD': np.int32, 'BAD': np.int32,
+                     'SEQUENCE': str, 'MOID': str,
+                     'H': np.float32, 'PROPER_SEMIMAJOR_AXIS': np.float32,
+                     'PROPER_ECCENTRICITY': np.float32,
+                    'SINE_OF_PROPER_INCLINATION': np.float32,
+                    'OSC_SEMIMAJOR_AXIS': np.float32,
+                    'OSC_ECCENTRICITY': np.float32,
+                    'OSC_INCLINATION': np.float32}
+    taxfwflist = [6, 18, 12, 3, 3, 2, 2, 3, 10, 6, 7, 7, 7, 7, 8, 7, 9]
+    return pd.read_fwf(tax_filepath, widths=taxfwflist, sep='\t',
+                       header=None, names=list(tax_datatypes.keys()),
+                       dtype=tax_datatypes)
+
 
 def plot_5d(feature_x, feature_y, feature_z, feature_color, feature_size,
             x_label, y_label, z_label, c_label, s_label, title,
@@ -90,3 +113,39 @@ def calc_ref_colors(df, columns, refl_list):
 #    for i in range(1, len(columns))
 #        df[column + "_GRAD"] = ()
 
+def k_means_pp(data, num_clusters):
+    centers = kmeans_plusplus_initializer(data, num_clusters).initialize()
+
+    # create instance of K-Means algorithm
+    kmeans_instance = kmeans(data, centers)
+
+    # run cluster analysis and obtain results
+    kmeans_instance.process();
+    centers = kmeans_instance.get_clusters();
+    error = kmeans_instance.get_total_wce()
+
+    return (centers, error)
+
+def apply_classification(df, cluster_list, classification_col_name):
+    for i in range(len(cluster_list)):
+        df.loc[cluster_list[i], classification_col_name] = i
+
+def merge(df1, df2, on):
+    merged = pd.merge(df1, df2, sort=False, on=on, how='outer', indicator=False)
+    return merged.dropna()
+
+def compare_results(df, classification_col_name, other_class_col):
+    all_ratios = []
+
+    for class_type in df[classification_col_name].unique():
+        subset_df = df.loc[df[classification_col_name] == class_type]
+        count_dict = {}
+        
+        for value in subset_df[other_class_col]:
+            if value in count_dict:
+                count_dict[value] += 1
+            else:
+                count_dict[value] = 1
+        all_ratios.append((class_type, count_dict))
+    
+    return all_ratios
