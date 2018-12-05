@@ -1,5 +1,11 @@
-import numpy as np
 import random
+
+import numpy as np
+cimport numpy as np
+import cython
+
+cdef extern from "math.h":
+    double abs(double t)
 
 
 def k_medoids(dist_matrix, int k, iter_max=100):
@@ -32,16 +38,13 @@ def k_medoids(dist_matrix, int k, iter_max=100):
     if k > len(valid_med_idx):
         raise Exception("Encountered {} duplicates, now there are more clusters\
                          than datapoints." % len(valid_med_idx))
-
     # Randomly initialize medoids.
     medoid_centers = np.array(valid_med_idx)
     np.random.shuffle(medoid_centers)
     medoid_centers = np.sort(medoid_centers[:k])
 
     cluster_dict = {}
-    med_copy = np.copy(medoid_centers)
-
-    cost = 0
+    cdef int cost = 0
 
     while (iter_max):
         iter_max -= 1
@@ -55,19 +58,18 @@ def k_medoids(dist_matrix, int k, iter_max=100):
         for curr_class in range(k):
             optimal_elements = np.mean(dist_matrix[np.ix_(cluster_dict[curr_class],
                                        cluster_dict[curr_class])], axis=1)
-            med_copy[curr_class] = cluster_dict[curr_class][np.argmin(optimal_elements)]
+            medoid_centers[curr_class] = cluster_dict[curr_class][np.argmin(optimal_elements)]
         
         # Calculate cost with squared error.
-        dist_cpy = np.copy(dist_matrix)
-        for curr_class in range(k):
-            cost += np.sum(np.square(dist_cpy[np.ix_(cluster_dict[curr_class],
-                                       cluster_dict[curr_class])]))
+        #dist_cpy = np.copy(dist_matrix)
+        #for curr_class in range(k):
+        #    cost += np.sum(np.square(dist_cpy[np.ix_(cluster_dict[curr_class],
+        #                               cluster_dict[curr_class])]))
 
         # Check for convergence
-        if np.array_equal(medoid_centers, med_copy):
+        if np.array_equal(medoid_centers, medoid_centers):
             break
 
-        medoid_centers = np.copy(med_copy)
     else:
         # Fencepost assign elements to clusters.
         min_elements = np.argmin(dist_matrix[:, medoid_centers], axis=1)
@@ -76,3 +78,32 @@ def k_medoids(dist_matrix, int k, iter_max=100):
 
     # return results
     return medoid_centers, cluster_dict, cost
+
+@cython.wraparound(False)
+@cython.boundscheck(False)
+def pairwise_distance(np.ndarray[np.double_t, ndim=1] r):
+    cdef int i, j, c, size
+    cdef np.ndarray[np.double_t, ndim=1] ans
+    size = sum(range(1, r.shape[0] + 1))
+    ans = np.empty(size, dtype=r.dtype)
+
+    c = 0
+    for i in range(r.shape[0]):
+        for j in range(i, r.shape[0]):
+            ans[c] = abs(r[i] - r[j])
+            c += 1
+    return ans
+
+def slow_dot (np.ndarray[np.double_t, ndim=2] A, 
+              np.ndarray[np.double_t, ndim=2] B):
+    """Low-memory implementation of dot product"""
+    R = np.empty([A.shape[0], B.shape[1]])
+    for i in range(A.shape[0]):
+        for j in range(B.shape[1]):
+            R[i, j] = np.dot(A[i, :], B[:, j])
+    return R
+
+def pairwise_euclidean_distances(np.ndarray[np.double_t, ndim=2] x,
+                                 np.ndarray[np.double_t, ndim=2] y):
+    transp_x = x.T
+    return np.sqrt(np.dot(x, transp_x) - 2 * np.dot(y, transp_x) + np.dot(y, y.T))
