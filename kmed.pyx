@@ -4,12 +4,23 @@ import numpy as np
 cimport numpy as np
 import cython
 
+from scipy.sparse import csr_matrix
+from scipy.sparse import issparse
+
+from sklearn.utils.extmath import safe_sparse_dot
+from sklearn.metrics.pairwise import check_pairwise_arrays, euclidean_distances
+
 cdef extern from "math.h":
     double abs(double t)
 
 
-def k_medoids(dist_matrix, int k, iter_max=100):
-    m, n = dist_matrix.shape
+def k_medoids(np.ndarray[np.double_t, ndim=2] dist_matrix,
+              int k,
+              iter_max=100):
+    cdef int m, n
+    
+    m = dist_matrix.shape[0]
+    n = dist_matrix.shape[1]
 
     if k > n:
         raise Exception("More clusters than datapoints.")
@@ -38,6 +49,7 @@ def k_medoids(dist_matrix, int k, iter_max=100):
     if k > len(valid_med_idx):
         raise Exception("Encountered {} duplicates, now there are more clusters\
                          than datapoints." % len(valid_med_idx))
+
     # Randomly initialize medoids.
     medoid_centers = np.array(valid_med_idx)
     np.random.shuffle(medoid_centers)
@@ -59,12 +71,6 @@ def k_medoids(dist_matrix, int k, iter_max=100):
             optimal_elements = np.mean(dist_matrix[np.ix_(cluster_dict[curr_class],
                                        cluster_dict[curr_class])], axis=1)
             medoid_centers[curr_class] = cluster_dict[curr_class][np.argmin(optimal_elements)]
-        
-        # Calculate cost with squared error.
-        #dist_cpy = np.copy(dist_matrix)
-        #for curr_class in range(k):
-        #    cost += np.sum(np.square(dist_cpy[np.ix_(cluster_dict[curr_class],
-        #                               cluster_dict[curr_class])]))
 
         # Check for convergence
         if np.array_equal(medoid_centers, medoid_centers):
@@ -75,6 +81,12 @@ def k_medoids(dist_matrix, int k, iter_max=100):
         min_elements = np.argmin(dist_matrix[:, medoid_centers], axis=1)
         for curr_class in range(k):
             cluster_dict[curr_class] = np.where(min_elements == curr_class)[0]
+    
+    # Calculate cost with squared error.
+    #dist_cpy = np.copy(dist_matrix)
+    #for curr_class in range(k):
+    #    cost += np.sum(np.square(dist_cpy[np.ix_(cluster_dict[curr_class],
+    #                               cluster_dict[curr_class])]))
 
     # return results
     return medoid_centers, cluster_dict, cost
@@ -94,16 +106,44 @@ def pairwise_distance(np.ndarray[np.double_t, ndim=1] r):
             c += 1
     return ans
 
+@cython.wraparound(False)
+@cython.boundscheck(False)
+def base_dot(np.ndarray[np.double_t, ndim=1] A,
+             np.ndarray[np.double_t, ndim=1] B):
+    cdef int prod = 0
+    for i, j in zip(A, B):
+        prod += i * j
+    return prod
+
+@cython.wraparound(False)
+@cython.boundscheck(False)
 def slow_dot (np.ndarray[np.double_t, ndim=2] A, 
               np.ndarray[np.double_t, ndim=2] B):
     """Low-memory implementation of dot product"""
-    R = np.empty([A.shape[0], B.shape[1]])
+    #R = np.empty([A.shape[0], B.shape[1]], dtype=np.float32)
     for i in range(A.shape[0]):
         for j in range(B.shape[1]):
-            R[i, j] = np.dot(A[i, :], B[:, j])
-    return R
+            #R[i, j] =
+            base_dot(A[i, :], B[:, j])
+    #return R
 
-def pairwise_euclidean_distances(np.ndarray[np.double_t, ndim=2] x,
-                                 np.ndarray[np.double_t, ndim=2] y):
-    transp_x = x.T
-    return np.sqrt(np.dot(x, transp_x) - 2 * np.dot(y, transp_x) + np.dot(y, y.T))
+@cython.wraparound(False)
+@cython.boundscheck(False)
+def euclidean_distances_slow(np.ndarray[np.double_t, ndim=2] X,
+                             np.ndarray[np.double_t, ndim=2] Y):
+    if issparse(X):
+        XX = X.multiply(X).sum(axis=1)
+    else:
+        XX = np.sum(X * X, axis=1)[:, np.newaxis]
+        YY = XX.T
+
+    distances = slow_dot(X, Y.T)
+    distances *= -2
+    distances += XX
+    distances += YY
+    np.maximum(distances, 0, distances)
+
+    # Assume X is Y
+    distances.flat[::distances.shape[0] + 1] = 0.0
+
+    return np.sqrt(distances)

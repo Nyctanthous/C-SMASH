@@ -3,16 +3,17 @@ import numpy as np
 import pandas as pd
 from analysis import *
 import pickle
+import gc
+
 
 import random
 import time
 
 from sklearn.metrics.pairwise import euclidean_distances
-from sklearn.metrics.pairwise import pairwise_distances
 import kmed
 
 NUM_CORES = 8
-SUBSET_SIZE = 1000#146600
+SUBSET_SIZE = 13000#146600
 
 print("Staring script...")
 time.sleep(1)
@@ -53,6 +54,11 @@ merged.reset_index(drop=True, inplace=True)
 print("Loaded the Tax.")
 time.sleep(1)
 
+del tax_df, sdss_df
+gc.collect()
+time.sleep(1)
+print("Ran GC")
+
 # ---------------------------------------------------------------------------------------------
 def grad(c1, c2, c1_base, c2_base):
     return -0.4*((c2 - c1) / (c2_base - c1_base))
@@ -78,14 +84,29 @@ merged["Z_REFL"] = grad(merged["COLOR_I"], merged["COLOR_Z"], 0.763, 0.913)
 wave_mags = ["G_REFL", "R_REFL", "I_REFL", "Z_REFL"]
 
 
-training_data = merged[wave_mags].values[:SUBSET_SIZE]
+training_data = merged[wave_mags].values
 
 print("Training data created.")
 time.sleep(1)
 
 # ---------------------------------------------------------------------------------------------
-#D = euclidean_distances(training_data, training_data)
-D = kmed.pairwise_euclidean_distances(training_data, training_data)
+# Pick random indices to sample from. Has no repitition.
+arr_size = len(merged) - 1
+
+#index_dict = {}
+#while len(index_dict.keys()) < 50000:
+#    index_dict[random.randint(0, arr_size)] = 0
+
+#random_sample = np.array([training_data[idx] for idx in index_dict.keys()])
+random_sample = training_data
+
+print("Random sample created")
+time.sleep(1)
+
+# ---------------------------------------------------------------------------------------------
+#D = dense_euclidean_distances(training_data, training_data)
+D = kmed.euclidean_distances_slow(random_sample, random_sample)
+#D = pdist(training_data, 'euclidean')
 
 print("Pairwise created, shape is ", D.shape)
 time.sleep(1)
