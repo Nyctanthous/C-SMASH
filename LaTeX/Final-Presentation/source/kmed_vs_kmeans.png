@@ -1,0 +1,764 @@
+<!DOCTYPE HTML>
+<html lang="en-gb" class="no-js">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.5,user-scalable=yes">
+    <meta name="citation_publisher" content="Springer, Boston, MA"/>
+    <meta name="citation_title" content="&lt;Emphasis Type=&quot;Italic&quot;&gt;K&lt;/Emphasis&gt;-Medoids Clustering"/>
+    <meta name="citation_doi" content="10.1007/978-0-387-30164-8_426"/>
+    <meta name="citation_language" content="en"/>
+    <meta name="citation_abstract_html_url" content="https://link.springer.com/referenceworkentry/10.1007/978-0-387-30164-8_426"/>
+    <meta name="citation_fulltext_html_url" content="https://link.springer.com/referenceworkentry/10.1007/978-0-387-30164-8_426"/>
+    <meta name="citation_pdf_url" content="https://link.springer.com/content/pdf/10.1007%2F978-0-387-30164-8_426.pdf"/>
+    <meta name="citation_springer_api_url" content="http://api.springer.com/metadata/pam?q=doi:10.1007/978-0-387-30164-8_426&amp;api_key="/>
+    <meta name="citation_firstpage" content="564"/>
+    <meta name="citation_lastpage" content="565"/>
+    <meta name="citation_author" content="Xin Jin"/>
+    <meta name="citation_author" content="Jiawei Han"/>
+    <meta name="dc.identifier" content="10.1007/978-0-387-30164-8_426"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" content="The K-means clustering algorithm is sensitive to outliers, because a mean is easily influenced by extreme values. K-medoids clustering is a variant of K-means that is more robust to noises and..."/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="K-Medoids Clustering"/>
+    <meta name="twitter:image" content="https://static-content.springer.com/cover/book/978-0-387-30164-8.jpg"/>
+    <meta name="twitter:image:alt" content="Content cover image"/>
+    <meta name="twitter:site" content="SpringerLink"/>
+    <meta name="twitter:description" content="The K-means clustering algorithm is sensitive to outliers, because a mean is easily influenced by extreme values. K-medoids clustering is a variant of K-means that is more robust to noises and..."/>
+    <meta name="citation_inbook_title" content="Encyclopedia of Machine Learning"/>
+    <meta name="citation_publication_date" content="2011"/>
+    <meta property="og:title" content="K-Medoids Clustering"/>
+    <meta property="og:type" content="Paper"/>
+    <meta property="og:url" content="https://link.springer.com/referenceworkentry/10.1007/978-0-387-30164-8_426"/>
+    <meta property="og:image" content="https://static-content.springer.com/cover/book/978-0-387-30164-8.jpg"/>
+    <meta property="og:site_name" content="SpringerLink"/>
+    <meta property="og:description" content="The K-means clustering algorithm is sensitive to outliers, because a mean is easily influenced by extreme values. K-medoids clustering is a variant of K-means that is more robust to noises and..."/>
+
+        <title>K-Medoids Clustering | SpringerLink</title>
+        <link rel="canonical" href="https://link.springer.com/referenceworkentry/10.1007/978-0-387-30164-8_426"/>
+        <link rel="shortcut icon" href="/springerlink-static/1645515599/images/favicon/favicon.ico">
+<link rel="icon" sizes="16x16 32x32 48x48" href="/springerlink-static/1645515599/images/favicon/favicon.ico">
+<link rel="icon" sizes="16x16" type="image/png" href="/springerlink-static/1645515599/images/favicon/favicon-16x16.png">
+<link rel="icon" sizes="32x32" type="image/png" href="/springerlink-static/1645515599/images/favicon/favicon-32x32.png">
+<link rel="icon" sizes="48x48" type="image/png" href="/springerlink-static/1645515599/images/favicon/favicon-48x48.png">
+<link rel="apple-touch-icon" href="/springerlink-static/1645515599/images/favicon/app-icon-iphone@3x.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/springerlink-static/1645515599/images/favicon/ic_launcher_hdpi.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/springerlink-static/1645515599/images/favicon/app-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/springerlink-static/1645515599/images/favicon/app-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/springerlink-static/1645515599/images/favicon/app-icon-iphone@2x.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/springerlink-static/1645515599/images/favicon/ic_launcher_xxhdpi.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/springerlink-static/1645515599/images/favicon/app-icon-ipad@2x.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/springerlink-static/1645515599/images/favicon/app-icon-iphone@3x.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/springerlink-static/1645515599/images/favicon/ic_launcher_xxhdpi.png">
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//google-analytics.com">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="dns-prefetch" href="//www.googletagservices.com">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//static-content.springer.com">
+        <link rel="stylesheet" href="/springerlink-static/1645515599/css/basic.css" media="screen">
+<link rel="stylesheet" href="/springerlink-static/1645515599/css/styles.css" class="js-ctm" media="only screen and (-webkit-min-device-pixel-ratio:0) and (min-color-index:0), (-ms-high-contrast: none), only all and (min--moz-device-pixel-ratio:0) and (min-resolution: 3e1dpcm)">
+<link rel="stylesheet" href="/springerlink-static/1645515599/css/print.css" media="print">
+
+
+            <script type="text/javascript">
+        window.Krux||((Krux=function(){Krux.q.push(arguments);}).q=[]);
+        var dataLayer = [{
+                'GA Key':"UA-26408784-1",
+                'Features':["leaderboardadverts","eventtracker"],
+                'Event Category':"Reference work entry",
+                'Open Access':"N",
+                'Labs':"Y",
+                'DOI':"10.1007/978-0-387-30164-8_426",
+                'VG Wort Identifier':"pw-vgzm.415900-10.1007-978-0-387-30164-8_426",
+                'hasAccess':"N",
+                'Full HTML':"N",
+                'Has Body':"Y",
+                'Static Hash':"1645515599",
+                'Has Preview':"N",
+                'user':{"license":{"businessPartnerID":[],"businessPartnerIDString":""}},
+                'content':{"serial":{"eissn":"","pissn":""},"book":{"seriesTitle":"","eisbn":"978-0-387-30164-8","pisbn":"978-0-387-30768-8","bookProductType":"Encyclop(a)edia","seriesId":"","title":"Encyclopedia of Machine Learning","doi":"10.1007/978-0-387-30164-8"},"chapter":{"doi":"10.1007/978-0-387-30164-8_426"},"version":"static","category":{"pmc":{"primarySubject":"Computer Science","primarySubjectCode":"I","secondarySubjects":{"4":"Pattern Recognition","5":"Statistics for Engineering, Physics, Computer Science, Chemistry and Earth Sciences","1":"Artificial Intelligence (incl. Robotics)","2":"Computing Methodologies","3":"Data Mining and Knowledge Discovery"},"secondarySubjectCodes":{"4":"I2203X","5":"S14000","1":"I21017","2":"I21009","3":"I18030"}},"sucode":"SUCO11645"},"type":"ReferenceWorkEntry"},
+                'Access Type':"noaccess",
+                'Page':"entry",
+                'Bpids':"",
+                'Bpnames':"",
+                'SubjectCodes':"I, I21017, I21009, I18030, I2203X, S14000",
+                'session':{"authentication":{"loginStatus":"N"},"attributes":{"edition":"academic"}},
+                'eventTrackerBaseUrl':"https://event-tracker.springernature.com",
+                'Country':"US",
+
+
+                'CurrentPage':22,
+                'MaxPage':45
+        }];
+    </script>
+
+<script type="text/javascript" src="/springerlink-static/1645515599/js/jquery-3.3.1.min.js"></script>
+
+        <script type="text/javascript" src="https://cdn.cookielaw.org/consent/6b2ec9cd-5ace-4387-96d2-963e596401c6.js" charset="UTF-8"></script>
+
+<script type="text/javascript">
+    function OptanonWrapper() {
+        dataLayer.push({
+            'event' : 'onetrustActive'
+        });
+    }
+</script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WCF9Z9');</script>
+
+    </head>
+    <body class="page-wrapper--flex">
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WCF9Z9"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="skip-to">
+    <a class="skip-to__link pseudo-focus" href="#main-content">Skip to main content</a>
+        <a href="#toc" class="skip-to__link skip-to__link--contents pseudo-focus">Skip to table of contents</a>
+</div>
+
+    <div class="page-wrapper page-wrapper--flex">
+        <noscript>
+    <div class="nojs-banner u-interface">
+        <p>This service is more advanced with JavaScript available, learn more at <a
+                href="http://activatejavascript.org" target="_blank" rel="noopener">http://activatejavascript.org</a>
+        </p>
+    </div>
+</noscript>
+
+        <div class="header header--flex">
+                <header id="header" class="header u-interface" role="banner">
+        <div class="header__content header__content--flex">
+            <div class="header__menu-container">
+                    <a id="logo" class="site-logo" href="/" title="Go to homepage">
+                <div class="u-screenreader-only">SpringerLink</div>
+    <svg class="site-logo__springer" width="148" height="30" role="img" focusable="false" aria-hidden="true">
+        <image width="148" height="30" alt="" src="/springerlink-static/1645515599/images/png/springerlink.png" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/springerlink-static/1645515599/images/svg/springerlink.svg"></image>
+    </svg>
+
+    </a>
+
+
+                    <nav id="search-container" class="u-inline-block">
+                        <div class="search">
+                            <div class="search__content">
+                                <form class="u-form-single-input" action="/search" method="get" role="search">
+    <label for="search-springerlink">Search SpringerLink</label>
+    <div class="u-relative">
+        <input id="search-springerlink" name="query" type="text" autocomplete="off" value="">
+        <input class="u-hide-text" type="submit" value="Submit" title="Submit">
+        <svg class="u-vertical-align-absolute" width="13" height="13" viewBox="222 151 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" role="presentation">
+            <path d="M227 159C228.7 159 230 157.7 230 156 230 154.3 228.7 153 227 153 225.3 153 224 154.3 224 156 224 157.7 225.3 159 227 159L227 159 227 159 227 159ZM230 160.1L231.1 159 233.9 161.7C234.2 162.1 234.2 162.6 233.9 162.9 233.6 163.2 233.1 163.2 232.7 162.9L230 160.1 230 160.1 230 160.1 230 160.1ZM227 161L227 161C224.2 161 222 158.8 222 156 222 153.2 224.2 151 227 151 229.8 151 232 153.2 232 156 232 158.8 229.8 161 227 161L227 161 227 161 227 161 227 161Z" stroke="none" fill-rule="evenodd"/>
+        </svg>
+    </div>
+</form>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <nav class="nav-container u-interface">
+    <div class="global-nav__wrapper">
+        <div class="search-button">
+            <a class="search-button__label" href="#search-container">
+                <span class="search-button__title">Search</span><svg width="12" height="12" viewBox="222 151 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" role="presentation">
+                    <path d="M227 159C228.7 159 230 157.7 230 156 230 154.3 228.7 153 227 153 225.3 153 224 154.3 224 156 224 157.7 225.3 159 227 159L227 159 227 159 227 159ZM230 160.1L231.1 159 233.9 161.7C234.2 162.1 234.2 162.6 233.9 162.9 233.6 163.2 233.1 163.2 232.7 162.9L230 160.1 230 160.1 230 160.1 230 160.1ZM227 161L227 161C224.2 161 222 158.8 222 156 222 153.2 224.2 151 227 151 229.8 151 232 153.2 232 156 232 158.8 229.8 161 227 161L227 161 227 161 227 161 227 161Z" stroke="none" fill-rule="evenodd"></path>
+                </svg>
+            </a>
+        </div>
+
+        <ul class="global-nav" data-component="SV.Menu" data-title="Navigation menu" data-text="Menu">
+            <li>
+                <a href="/">
+                    <span class="u-overflow-ellipsis">Home</span>
+                </a>
+            </li>
+
+                <li class="global-nav__logged-out">
+                    <a class="test-login-link" href="//link.springer.com/signup-login?previousUrl=https%3A%2F%2Flink.springer.com%2Freferenceworkentry%2F10.1007%252F978-0-387-30164-8_426">
+                        <span class="u-overflow-ellipsis">Log in</span>
+                    </a>
+                </li>
+
+        </ul>
+    </div> 
+</nav> 
+            </div>
+
+        </div>
+    </header>
+
+        </div>
+
+        <main id="main-content" class="main-wrapper main-wrapper--flex" tabindex="-1">
+
+            <div class="unified-header">
+    <div class="unified-header__content" >
+        <div class="unified-header__container">
+            <h1 class="unified-header__title"><a class="unified-header__link gtm-book-link" href="/referencework/10.1007/978-0-387-30164-8">Encyclopedia of Machine Learning</a></h1>
+                <div id="edition-details" class="edition">
+        <span id="test-edition-header" class="u-strong unified-header__editors">2010 Edition</span>
+    </div>
+    <div id="editors" class="persons u-show-inline-two-col-medium">
+        <span class="u-strong unified-header__editors u-js-show-inline-two-col-medium u-hide-micro"> | </span>
+        <span class="u-strong unified-header__editors">Editors: </span>
+        <span id="test-editors-header" class="unified-header__editors">Claude Sammut, Geoffrey I. Webb</span>
+    </div>
+
+        </div>
+    </div>
+</div>  
+
+            <div id="c-tabs" class="c-tabs c-tabs--rwe u-js-hide">
+                <ul class="c-tabs__list c-tabs--rwe__list" role="tablist">
+    <li class="c-tabs__list-item c-tabs--rwe__list-item">
+        <a href="#toc" class="c-tabs__list-link c-tabs--rwe__list-link gtm-toc-contents" data-test="toc-link" title="Table of contents" role="tab" aria-controls="toc" id="tab-controls__toc">
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 5v12.2676C5.2942 17.0974 5.6357 17 6 17h14c0 .5523-.4477 1-1 1H6c-.5523 0-1 .4477-1 1s.4477 1 1 1h13.5c.276 0 .5.224.5.5s-.224.5-.5.5H6c-1.1046 0-2-.8954-2-2V5c0-1.1046.8954-2 2-2h13c.5523 0 1 .4477 1 1v13h-1V4H6c-.5523 0-1 .4477-1 1zm5 1h7v4h-7V6zm1 3h5V7h-5v2zM7 5h1v12H7V5z" fill="#004AA7"/>
+            </svg>
+            <span aria-hidden="true">Contents</span>
+        </a>
+    </li>
+
+    <li class="c-tabs__list-item c-tabs--rwe__list-item">
+        <a href="#springerlink-search" class="c-tabs__list-link c-tabs--rwe__list-link gtm-toc-search" title="Search in this book" role="tab" aria-controls="springerlink-search" id="tab-controls__springerlink-search">
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.4804 18.4546c.283.2828.29.7492.0067 1.0325-.275.275-.7453.2806-1.0322-.0064l-3.0443-3.0442C14.2065 17.414 12.6717 18 11 18c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7c0 1.6717-.586 3.2066-1.5638 4.4103l3.0442 3.0443zM11 17c3.3137 0 6-2.6863 6-6s-2.6863-6-6-6-6 2.6863-6 6 2.6863 6 6 6z" fill="#004AA7"/>
+            </svg>
+            <span aria-hidden="true">Search</span>
+        </a>
+    </li>
+
+</ul>
+            </div>
+            
+            <div id="main-container" class="main-container main-container--flex uptodate-recommendations-off">
+
+                <div class="main-body main-body--flex" data-role="NavigationContainer">
+                    <article class="main-body__content">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="FulltextWrapper"><div class="ArticleHeader main-context"><div class="MainTitleSection"><h1 class="ChapterTitle" lang="en"><em class="EmphasisTypeItalic ">K</em>-Medoids Clustering</h1></div><div class="authors u-clearfix" data-component="SpringerLink.Authors"><ul class="u-interface u-inline-list authors__title" data-role="AuthorsNavigation"><li><span>Authors</span></li><li><a href="#authorsandaffiliations" class="gtm-tab-authorsandaffiliations">Authors and affiliations</a></li></ul><div class="authors__list" data-role="AuthorsList"><ul class="test-contributor-names"><li itemscope="" itemtype="http://schema.org/Person" class="u-mb-2 u-pt-4 u-pb-4"><span itemprop="name" class="authors__name">Xin Jin</span></li><li itemscope="" itemtype="http://schema.org/Person" class="u-mb-2 u-pt-4 u-pb-4"><span itemprop="name" class="authors__name">Jiawei Han</span></li></ul></div></div><div class="main-context__container" data-component="SpringerLink.ArticleMetrics"><div class="main-context__column"><span><span class="test-render-category">Reference work entry</span></span><div><strong>DOI: </strong><span><span>https://doi.org/</span><span class="ChapterDOI">10.1007/978-0-387-30164-8_426</span></span></div></div><div class="main-context__column">    <ul id="book-metrics" class="article-metrics u-sansSerif">
+            <li class="article-metrics__item">
+                    <a class="article-metrics__link gtm-chaptercitations-count" href="http://www.bookmetrix.com/detail/chapter/87962611-d5a0-4c58-b14a-66f7f6ea9c93#citations" target="_blank" rel="noopener"
+                       title="Visit Bookmetrix for full citation details" id="chaptercitations-link">
+                            <span id="chaptercitations-count-number" class="test-metric-count c-button-circle gtm-chaptercitations-count">1</span>
+                       <span class="test-metric-name article-metrics__label gtm-chaptercitations-count">Citations</span>
+                    </a>
+            </li>
+            <li class="article-metrics__item">
+                    <a class="article-metrics__link gtm-chapterreaders-count" href="http://www.bookmetrix.com/detail/chapter/87962611-d5a0-4c58-b14a-66f7f6ea9c93#readers" target="_blank" rel="noopener"
+                       title="Visit Bookmetrix for full Mendeley reader details" id="chapterreaders-link">
+                            <span id="chapterreaders-count-number" class="test-metric-count c-button-circle gtm-chapterreaders-count">6</span>
+                       <span class="test-metric-name article-metrics__label gtm-chapterreaders-count">Readers</span>
+                    </a>
+            </li>
+            <li class="article-metrics__item">
+                    <a class="article-metrics__link gtm-chapterdownloads-count" href="http://www.bookmetrix.com/detail/chapter/87962611-d5a0-4c58-b14a-66f7f6ea9c93#downloads" target="_blank" rel="noopener"
+                       title="Visit Bookmetrix for full download details" id="chapterdownloads-link">
+                            <span id="chapterdownloads-count-number" class="test-metric-count c-button-circle gtm-chapterdownloads-count">1.6k</span>
+                       <span class="test-metric-name article-metrics__label gtm-chapterdownloads-count">Downloads</span>
+                    </a>
+            </li>
+    </ul>
+</div></div></div><div class="cta-button-container cta-button-container--inline cta-button-container--stacked u-mb-36 test-pdf-link"><div class="cta-button-container__item cta-button-container__item--width-auto-small"><a class="c-button" href="#howtocite">How to cite</a></div></div><div id="body"><div xmlns="http://www.w3.org/1999/xhtml" class="Para">
+ The 
+ <em class="EmphasisTypeItalic ">K</em>-means clustering algorithm is sensitive to outliers, because a mean is easily influenced by extreme values. 
+ <em class="EmphasisTypeItalic ">K</em>-medoids clustering is a variant of 
+ <em class="EmphasisTypeItalic ">K</em>-means that is more robust to noises and outliers. Instead of using the mean point as the center of a cluster, 
+ <em class="EmphasisTypeItalic ">K</em>-medoids uses an actual point in the cluster to represent it. Medoid is the most centrally located object of the cluster, with minimum sum of distances to other points. Figure&nbsp;
+ <span class="InternalRef"><a href="#Fig1_426">1</a></span> shows the difference between mean and medoid in a 2-D&nbsp;example. The group of points in the right form a cluster, while the rightmost point is an outlier. Mean is greatly influenced by the outlier and thus cannot represent the correct cluster center, while medoid is robust to the outlier and correctly represents the cluster center.
+ <figure class="Figure" id="Fig1_426">
+  <div class="MediaObject">
+   <a href="https://media.springernature.com/original/springer-static/image/prt%3A978-0-387-30164-8%2F12/MediaObjects/978-0-387-30164-8_12_Part_Fig1-426_HTML.gif" target="_blank" rel="noopener"><span class="u-screenreader-only">Open image in new window</span><img src="https://media.springernature.com/lw785/springer-static/image/prt%3A978-0-387-30164-8%2F12/MediaObjects/978-0-387-30164-8_12_Part_Fig1-426_HTML.gif" alt="K-Medoids Clustering. Figure&nbsp;1"></a>
+  </div>
+ </figure>
+</div></div><div class="note" id="encyclopedic_rwe_no_access_banner">This is a preview of subscription content, <a id="test-login-banner-link" href="/signup-login?previousUrl=https%3A%2F%2Flink.springer.com%2Freferenceworkentry%2F10.1007%252F978-0-387-30164-8_426">log in</a> to check access.</div><section class="Section1 RenderAsSection1" id="Bib1_426" tabindex="-1"><h2 class="Heading">Recommended Reading</h2><div class="content"><ol class="BibliographyWrapper"><li class="Citation"><div class="CitationContent" id="CR1_426">Kaufman, L., &amp; Rousseeuw, P. J. (2005). <em class="EmphasisTypeItalic ">Finding groups in data: An introduction to cluster analysis (Wiley series in probability and statistics)</em>. New York: Wiley-Interscience.<span class="Occurrences"><span class="Occurrence OccurrenceGS"><a target="_blank" rel="noopener" class="google-scholar-link gtm-reference" data-reference-type="Google Scholar" href="http://scholar.google.com/scholar_lookup?title=Finding%20groups%20in%20data%3A%20An%20introduction%20to%20cluster%20analysis%20%28Wiley%20series%20in%20probability%20and%20statistics%29&amp;author=L.%20Kaufman&amp;author=PJ.%20Rousseeuw&amp;publication_year=2005"><span><span>Google Scholar</span></span></a></span></span></div></li><li class="Citation"><div class="CitationContent" id="CR2_426">Ng, R. T., &amp; Han, J. (2002). Clarans: A method for clustering objects for spatial data mining. <em class="EmphasisTypeItalic ">IEEE Transactions on Knowledge and Data Engineering, 14</em>(5), 1003–1016.<span class="Occurrences"><span class="Occurrence OccurrenceDOI"><a class="gtm-reference" data-reference-type="CrossRef" target="_blank" rel="noopener" href="https://doi.org/10.1109/TKDE.2002.1033770"><span><span>CrossRef</span></span></a></span><span class="Occurrence OccurrenceGS"><a target="_blank" rel="noopener" class="google-scholar-link gtm-reference" data-reference-type="Google Scholar" href="http://scholar.google.com/scholar_lookup?title=Clarans%3A%20A%20method%20for%20clustering%20objects%20for%20spatial%20data%20mining&amp;author=RT.%20Ng&amp;author=J.%20Han&amp;journal=IEEE%20Transactions%20on%20Knowledge%20and%20Data%20Engineering&amp;volume=14&amp;issue=5&amp;pages=1003-1016&amp;publication_year=2002"><span><span>Google Scholar</span></span></a></span></span></div></li></ol></div></section><section class="Section1 RenderAsSection1"><h2 class="Heading" id="copyrightInformation">Copyright information</h2><div class="ArticleCopyright content"><div class="ChapterCopyright">© Springer Science+Business Media, LLC 2011</div></div></section><section id="authorsandaffiliations" class="Section1 RenderAsSection1"><h2 class="Heading">Authors and Affiliations</h2><div class="content authors-affiliations u-interface"><ul class="test-contributor-names"><li itemscope="" itemtype="http://schema.org/Person" class="u-mb-2 u-pt-4 u-pb-4"><span itemprop="name" class="authors-affiliations__name">Xin Jin</span></li><li itemscope="" itemtype="http://schema.org/Person" class="u-mb-2 u-pt-4 u-pb-4"><span itemprop="name" class="authors-affiliations__name">Jiawei Han</span></li></ul><p class="no-affiliations">There are no affiliations available</p></div></section></div>
+                            <aside class="section section--collapsible">
+    <h2 id="howtocite" class="section__heading">How to cite</h2>
+    <div class="section__content bibliographic-information citations">
+        <dl class="citation-info u-highlight-target u-mb-16" id="citeas" tabindex="-1">
+    <dt class="test-cite-heading">
+        Cite this entry as:
+    </dt>
+    <dd id="citethis-text">Jin X., Han J. (2011) <em class="EmphasisTypeItalic ">K</em>-Medoids Clustering. In: Sammut C., Webb G.I. (eds) Encyclopedia of Machine Learning. Springer, Boston, MA</dd>
+</dl>
+
+        <ul class="citations__content citations__content--row" data-role="button-dropdown__content">
+                <li>
+                    <a href="//citation-needed.springer.com/v2/references/10.1007/978-0-387-30164-8_426?format&#x3D;refman&amp;flavour&#x3D;citation" title="Download this reference work entry&#39;s citation as a .RIS file" class="gtm-export-citation test-cite-link" data-gtmlabel="RIS">
+                        <span class="citations__extension" data-gtmlabel="RIS">
+                            <svg class="u-vertical-align-absolute" width="12" height="14" viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 7.269v-6.271c0-.551-.448-.998-1-.998-.556 0-1 .447-1 .998v6.271l-1.5-1.547c-.375-.387-1.01-.397-1.401-.006l.016-.016c-.397.397-.391 1.025-.001 1.416l3.178 3.178c.392.392 1.024.391 1.415 0l3.178-3.178c.392-.392.391-1.025-.001-1.416l.016.016c-.397-.397-1.018-.388-1.401.006l-1.5 1.547zm-7 5.731c0-.552.456-1 1.002-1h9.995c.554 0 1.002.444 1.002 1 0 .552-.456 1-1.002 1h-9.995c-.554 0-1.002-.444-1.002-1z" fill="#004aa7"/></svg>
+                            .RIS
+                        </span>
+                        <div class="citations__types">
+                                <div>
+                                    Papers
+                                </div>
+                                <div>
+                                    Reference Manager
+                                </div>
+                                <div>
+                                    RefWorks
+                                </div>
+                                <div>
+                                    Zotero
+                                </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="//citation-needed.springer.com/v2/references/10.1007/978-0-387-30164-8_426?format&#x3D;endnote&amp;flavour&#x3D;citation" title="Download this reference work entry&#39;s citation as a .ENW file" class="gtm-export-citation test-cite-link" data-gtmlabel="ENW">
+                        <span class="citations__extension" data-gtmlabel="ENW">
+                            <svg class="u-vertical-align-absolute" width="12" height="14" viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 7.269v-6.271c0-.551-.448-.998-1-.998-.556 0-1 .447-1 .998v6.271l-1.5-1.547c-.375-.387-1.01-.397-1.401-.006l.016-.016c-.397.397-.391 1.025-.001 1.416l3.178 3.178c.392.392 1.024.391 1.415 0l3.178-3.178c.392-.392.391-1.025-.001-1.416l.016.016c-.397-.397-1.018-.388-1.401.006l-1.5 1.547zm-7 5.731c0-.552.456-1 1.002-1h9.995c.554 0 1.002.444 1.002 1 0 .552-.456 1-1.002 1h-9.995c-.554 0-1.002-.444-1.002-1z" fill="#004aa7"/></svg>
+                            .ENW
+                        </span>
+                        <div class="citations__types">
+                                <div>
+                                    EndNote
+                                </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="//citation-needed.springer.com/v2/references/10.1007/978-0-387-30164-8_426?format&#x3D;bibtex&amp;flavour&#x3D;citation" title="Download this reference work entry&#39;s citation as a .BIB file" class="gtm-export-citation test-cite-link" data-gtmlabel="BIB">
+                        <span class="citations__extension" data-gtmlabel="BIB">
+                            <svg class="u-vertical-align-absolute" width="12" height="14" viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 7.269v-6.271c0-.551-.448-.998-1-.998-.556 0-1 .447-1 .998v6.271l-1.5-1.547c-.375-.387-1.01-.397-1.401-.006l.016-.016c-.397.397-.391 1.025-.001 1.416l3.178 3.178c.392.392 1.024.391 1.415 0l3.178-3.178c.392-.392.391-1.025-.001-1.416l.016.016c-.397-.397-1.018-.388-1.401.006l-1.5 1.547zm-7 5.731c0-.552.456-1 1.002-1h9.995c.554 0 1.002.444 1.002 1 0 .552-.456 1-1.002 1h-9.995c-.554 0-1.002-.444-1.002-1z" fill="#004aa7"/></svg>
+                            .BIB
+                        </span>
+                        <div class="citations__types">
+                                <div>
+                                    BibTeX
+                                </div>
+                                <div>
+                                    JabRef
+                                </div>
+                                <div>
+                                    Mendeley
+                                </div>
+                        </div>
+                    </a>
+                </li>
+        </ul>
+    </div>
+</aside>
+                            <aside class="section section--collapsible" id="AboutThisContent">
+    <h2 class="section__heading" id="aboutcontent">About this entry</h2>
+    <div class="section__content bibliographic-information">
+        
+        <div class="crossmark__adjacent">
+                <ul class="bibliographic-information__list bibliographic-information__list--inline">
+        <li class="bibliographic-information__item">
+            <span class="bibliographic-information__title">DOI</span>
+            <span class="bibliographic-information__value u-overflow-wrap" id="doi-url">https://doi.org/10.1007/978-0-387-30164-8</span>
+        </li>
+        <li class="bibliographic-information__item">
+            <span class="bibliographic-information__title">Publisher Name</span>
+            <span class="bibliographic-information__value" id="publisher-name">Springer, Boston, MA</span>
+        </li>
+            <li class="bibliographic-information__item">
+                <span class="bibliographic-information__title">Print ISBN</span>
+                <span class="bibliographic-information__value" id="bibliographic-print-isbn">978-0-387-30768-8</span>
+            </li>
+            <li class="bibliographic-information__item ">
+                <span class="bibliographic-information__title">Online ISBN</span>
+                <span class="bibliographic-information__value" id="bibliographic-electronic-isbn">978-0-387-30164-8</span>
+            </li>
+                <li class="bibliographic-information__item">
+            <span class="bibliographic-information__title">eBook Packages</span>
+                <span class="bibliographic-information__value"><a id="ebook-package" href="/search?facet-content-type&#x3D;%22Book%22&amp;package&#x3D;11645&amp;facet-start-year&#x3D;2011&amp;facet-end-year&#x3D;2011">Computer Science</a></span>
+        </li>
+
+    </ul>
+
+            
+
+            <ul class="bibliographic-information__list">
+            <li class="bibliographic-information__item">
+                <a id="about-book" href="//www.springer.com/978-0-387-30768-8?wt_mc&#x3D;ThirdParty.SpringerLink.3.EPR653.About_eBook"
+                   class="gtm-about-this" >Buy this book on publisher's site</a>
+            </li>
+        <li class="bibliographic-information__item">
+            <a id="reprintsandpermissions-link" target="_blank" rel="noopener" href="https://s100.copyright.com/AppDispatchServlet?publisherName&#x3D;SpringerNature&amp;orderBeanReset&#x3D;true&amp;orderSource&#x3D;SpringerLink&amp;copyright&#x3D;Springer+Science%2BBusiness+Media%2C+LLC&amp;author&#x3D;Xin+Jin%2C+Jiawei+Han&amp;contentID&#x3D;10.1007%2F978-0-387-30164-8_426&amp;endPage&#x3D;565&amp;publicationDate&#x3D;2011&amp;startPage&#x3D;564&amp;title&#x3D;K-Medoids+Clustering&amp;imprint&#x3D;Springer+Science%2BBusiness+Media%2C+LLC&amp;publication&#x3D;eBook" title="Visit RightsLink for information about reusing this reference work entry">Reprints and Permissions</a>
+        </li>
+</ul>
+
+
+
+        </div>
+        
+            
+    </div>
+</aside>
+                    </article>
+                </div>
+                
+                    <aside id="main-aside" data-test="main-aside" class="main-aside--flex section section--non-collapsible" data-component="SpringerLink.LayoutHandler">
+                    
+
+                    
+                        <div id="main-aside-content" class="c-tabs__content c-tabs--rwe__content u-js-hide u-js-show-two-col-medium">
+                            <div id="springerlink-search" class="c-tabs__content-item c-tabs--rwe__content-item u-pt-16 u-pr-16">
+                                <h2 class="u-show-micro u-hide-two-col-medium">Search book</h2>
+
+<form class="autosuggest u-form-single-input u-pb-16" action="/search" method="get" role="search" data-component="SpringerLink.Autosuggest">
+    <input type="hidden" name="facet-eisbn" value="978-0-387-30164-8"/>
+    <input type="hidden" name="facet-content-type" value="ReferenceWorkEntry"/>
+    <label for="springerlink-event-search">Search within book</label>
+    <div class="u-relative">
+        <input id="springerlink-event-search" name="query" type="text" autocomplete="off" value="" />
+        <input class="u-hide-text gtm-search-within" type="submit" value="Submit"
+               title="Submit">
+        <svg class="u-vertical-align-absolute" width="24" height="24" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" role="presentation">
+            <path d="M19.4804 18.4546c.283.2828.29.7492.0067 1.0325-.275.275-.7453.2806-1.0322-.0064l-3.0443-3.0442C14.2065 17.414 12.6717 18 11 18c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7c0 1.6717-.586 3.2066-1.5638 4.4103l3.0442 3.0443zM11 17c3.3137 0 6-2.6863 6-6s-2.6863-6-6-6-6 2.6863-6 6 2.6863 6 6 6z" fill="#666"/>
+        </svg>
+    </div>
+</form>
+
+<div class="u-hide u-js-show u-pt-16" data-role="autosuggest-output">
+    <div class="autosuggest__message u-hide u-js-show" data-role="autosuggest-message">Type for suggestions</div>
+</div>
+                            </div>
+                            <div id="toc" class="c-tabs__content-item c-tabs--rwe__content-item">
+                                <h2 class="h2--rwe u-js-hide-two-col-medium">Table of contents</h2>
+
+
+        <nav class="c-pagination c-pagination--rwe u-inline-block test-toc-pagination-top u-pt-16 u-pb-16 u-pr-16" role="navigation" aria-label="Pagination">
+
+            <a href="/referenceworkentry/10.1007%2F978-0-387-30164-8_426?page&#x3D;21#toc" class="test-pagination-previous c-pagination__previous" id="js-previous" title="Previous" rel="prev">
+                <span class="c-pagination__previous-icon">Previous</span>
+            </a>
+
+            <div class="c-pagination__info">
+                Page&nbsp;&nbsp;
+                <span class="test-pagenum u-js-hide" aria-current="true">22</span>
+
+                <form id="js-page-number" action="/referenceworkentry/10.1007%2F978-0-387-30164-8_426#toc" method="GET" class="test-pageuri c-pagination__jump">
+                    <label for="page-number-bottom" class="u-screenreader-only">Navigate to page number</label>
+                    <input type="number" id="page-number-bottom" name="page" min="1" max="45" class="c-pagination__input" value="22"/>
+                    <input class="c-pagination__submit u-screenreader-only" type="submit" value="Submit" aria-hidden="true">
+                </form>
+
+                &nbsp;&nbsp;of&nbsp;&nbsp;
+                <span id="maxPageNumber" class="test-maxpagenum">45</span>
+            </div>
+
+
+            <a href="/referenceworkentry/10.1007%2F978-0-387-30164-8_426?page&#x3D;23#toc" id="js-next" class="test-pagination-next c-pagination__next "  title="Next" rel="next">
+                <span class="c-pagination__next-icon">Next</span>
+            </a>
+
+
+        </nav>
+
+
+
+
+<div class="rwe-toc-container test-referenceWorkToc u-pt-12 u-pb-16">
+    <div data-component="SpringerLink.HighlightTocAnchorItems">
+         <div class="sticky-sidebar-toc">
+             <div class="js-contents">
+
+                <div id="about-ref-work" class="rwe-toc-container u-hide" hidden aria-hidden="true" data-test="test-about-ref-work test-hide-rwe-toc">
+                    <h3 class="rwe-toc-container__heading u-sansSerif">About this reference work</h3>
+                    <ol class="content-type-list content-type-list--aside">
+
+
+        <li class="chapter-item content-type-list__item content-type-list__item--link-only editorsandaffiliations-toc-item">
+            <div class="content-type-list__title">
+                <a class="content-type-list__link u-sansSerif u-interface-link gtm-editorsandaffiliations-link test-editorsandaffiliations-link" href=/referencework/10.1007/978-0-387-30164-8#editorsandaffiliations>Editors and affiliations</a>
+            </div>
+        </li>
+
+        <li class="chapter-item content-type-list__item content-type-list__item--link-only bibliographic-info-toc-item">
+            <div class="content-type-list__title">
+                <a class="content-type-list__link u-sansSerif u-interface-link gtm-bibliographic-link test-bibliographic-information-link" href=/referencework/10.1007/978-0-387-30164-8#bibliographic-info>Bibliographic information</a>
+            </div>
+        </li>
+</ol>
+                </div>
+
+                <div class="rwe-toc-container u-border-top-gray">
+                    <ol class="content-type-list content-type-list--aside" data-id="dynamic-toc-content">
+            <li data-part="I" class="part-item">
+                <h3 class="content-type-list__subheading content-type-list__subheading--contrast u-sansSerif">I</h3>
+                <div class="content-type-list__subcontainer">
+                    <ol class="content-type-list content-type-list--aside" data-id="dynamic-toc-content">
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_415">Inverse Entailment</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_416">Inverse Optimal Control</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_417">Inverse Reinforcement Learning</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_418">Inverse Resolution</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_419">Is More General Than</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_420">Is More Specific Than</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_421">Item</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_422">Iterative Classification</a>
+                        </div>
+                </div>
+            </li>
+</ol>
+                </div>
+            </li>
+            <li data-part="J" class="part-item">
+                <h3 class="content-type-list__subheading content-type-list__subheading--contrast u-sansSerif">J</h3>
+                <div class="content-type-list__subcontainer">
+                    <ol class="content-type-list content-type-list--aside" data-id="dynamic-toc-content">
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_423">Junk Email Filtering</a>
+                        </div>
+                </div>
+            </li>
+</ol>
+                </div>
+            </li>
+            <li data-part="K" class="part-item">
+                <h3 class="content-type-list__subheading content-type-list__subheading--contrast u-sansSerif">K</h3>
+                <div class="content-type-list__subcontainer">
+                    <ol class="content-type-list content-type-list--aside" data-id="dynamic-toc-content">
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_424"><em xmlns="http://www.w3.org/1999/xhtml" class="EmphasisTypeItalic ">k</em>-Armed Bandit</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_425"><em xmlns="http://www.w3.org/1999/xhtml" class="EmphasisTypeItalic ">K</em>-Means Clustering</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only content-type-list__item--current">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_426"><em xmlns="http://www.w3.org/1999/xhtml" class="EmphasisTypeItalic ">K</em>-Medoids Clustering</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_427"><em xmlns="http://www.w3.org/1999/xhtml" class="EmphasisTypeItalic ">K</em>-Way Spectral Clustering</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_428">Kernel Density Estimation</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_429">Kernel Matrix</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_430">Kernel Methods</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_431">Kernel Shaping</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_432">Kernel-Based Reinforcement\break Learning</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_433">Kernels</a>
+                        </div>
+                </div>
+            </li>
+            <li class="chapter-item content-type-list__item content-type-list__item--link-only">
+                <div class="content-type-list__meta">
+                        <div class="content-type-list__title">
+                            <a class="content-type-list__link u-interface-link gtm-chapter-link" href="/referenceworkentry/10.1007/978-0-387-30164-8_434">Kind</a>
+                        </div>
+                </div>
+            </li>
+</ol>
+                </div>
+            </li>
+</ol>
+                </div>
+             </div>
+         </div>
+    </div>
+</div>
+                            </div>
+                            <div id="download-book" class="c-tabs__content-item c-tabs--rwe__content-item">
+                                
+                            </div>
+                        </div>
+                    </aside>
+            </div>
+        </main>
+        <div class="footer--flex">
+                <footer class="footer u-interface">
+        <div class="footer__aside-wrapper">
+            <div class="footer__content footer__content--flex">
+                <div class="footer__aside">
+                    <p class="footer__strapline">Over 10 million scientific documents at your fingertips</p>
+                                <div class="footer__edition" data-component="SV.EditionSwitcher">
+                                    <h3 class="u-hide" data-role="button-dropdown__title" data-btn-text="Switch between Academic &#38; Corporate Edition">Switch Edition</h3>
+                                    <ul data-role="button-dropdown__content">
+                                        <li  class="selected"><a href="/siteEdition/link?previousUrl=/referenceworkentry/10.1007%2F978-0-387-30164-8_426&id=siteedition-academic-link" id="siteedition-academic-link">Academic Edition</a></li>
+                                        <li ><a href="/siteEdition/rd?previousUrl=/referenceworkentry/10.1007%2F978-0-387-30164-8_426&id=siteedition-corporate-link" id="siteedition-corporate-link">Corporate Edition</a></li>
+                                    </ul>
+                                </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__content footer__content--flex">
+            <ul class="footer__nav">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/impressum">Impressum</a>
+                </li>
+                <li>
+                    <a href="/termsandconditions">Legal information</a>
+                </li>
+                <li>
+                    <a href="/privacystatement">Privacy statement</a>
+                </li>
+                <li>
+                    <a href="/cookiepolicy">How we use cookies</a>
+                </li>
+                <li>
+                    <a href="/accessibility" class="gtm-footer-accessibility">Accessibility</a>
+                </li>
+                <li>
+                    <a id="contactus-footer-link" href="/contactus">Contact us</a>
+                </li>
+            </ul>
+            <a class="parent-logo"
+               target="_blank" rel="noopener"
+               href="//www.springernature.com"
+               title="Go to Springer Nature">
+                <span class="u-screenreader-only">Springer Nature</span>
+                <svg width="125" height="12" focusable="false" aria-hidden="true">
+                    <image width="125" height="12"
+                           src="/springerlink-static/1645515599/images/png/springernature.png"
+                           xmlns:xlink="http://www.w3.org/1999/xlink"
+                           xlink:href="/springerlink-static/1645515599/images/svg/springernature.svg">
+                    </image>
+                </svg>
+            </a>
+
+            <p class="footer__copyright">&copy; 2018 Springer Nature Switzerland AG. Part of <a target="_blank" rel="noopener" href="//www.springernature.com">Springer Nature</a>.</p>
+
+                <p class="footer__user-access-info">
+                    <span>Not logged in</span>
+                    <span>Not affiliated</span>
+                    <span>141.114.181.166</span>
+                </p>
+        </div>
+    </footer>
+
+        </div>
+        <script type="text/javascript">
+    (function() {
+        var linkEl = document.querySelector('.js-ctm');
+        var scriptsList = [];
+        var polyfillFeatures = '';
+
+        window.SpringerLink = window.SpringerLink || {};
+        window.SpringerLink.staticLocation = '/springerlink-static/1645515599';
+        window.eventTrackerInstance = null;
+
+        if (window.matchMedia && window.matchMedia(linkEl.media).matches) {
+            (function(h){h.className = h.className.replace('no-js', 'js')})(document.documentElement);
+
+            polyfillFeatures = 'default,fetch,Promise,Object.setPrototypeOf,Object.entries,Number.isInteger,MutationObserver,startsWith,Array.prototype.includes,Array.from,IntersectionObserver';
+
+            scriptsList = [
+                'https://cdn.polyfill.io/v2/polyfill.min.js?features=' + polyfillFeatures + '&flags=gated',
+                window.SpringerLink.staticLocation + '/js/main.js'
+            ];
+
+            scriptsList.forEach(function(script) {
+                var tag = document.createElement('script');
+                tag.async = false;
+                tag.src = script;
+
+                document.body.appendChild(tag);
+            });
+        }
+    })();
+</script>
+
+
+
+
+
+        
+        <span id="chat-widget" class="u-hide"></span>
+    </body>
+</html>

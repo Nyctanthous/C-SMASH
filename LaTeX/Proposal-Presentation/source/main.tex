@@ -1,0 +1,58 @@
+%% Requires compilation with XeLaTeX or LuaLaTeX
+\documentclass[10pt,xcolor={table,dvipsnames},t]{beamer}
+\usetheme{UCBerkeley}
+
+\title[SMACC]{SMACC}
+\subtitle{SDSS MOC4 Asteroid Color Classification}
+\author{Ben Montgomery, Daniel Shepard, Emily Wall}
+\institute{University of Southern Maine}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  % That's right, this is the SMACC talk.
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Introduction}
+\begin{itemize}
+    \item The Sloan Digital Sky Survey is a multi-spectral survey of celestial objects, most notably of asteroids.
+    \item About a half-million observations of asteroids have been made over the course of 18 years.
+    \item Classifying the compositions of these asteroids has been something of a hot topic.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Notable Previous Efforts}
+\begin{itemize}
+    \item \textit{Solar System Objects in the {SDSS} Commissioning Data} (2000): Used Autoclass, a NASA-developed unsupervised Bayesian classification algorithm. Concluded that there were \textbf{two classes}: $C-$ and $S-$ classes \cite{Autoclass}.
+    \item \textit{Searching for V-Type and Q-Type Main-Belt Asteroids Based On SDSS Colors} (2007): Used extensive computational and numerical analysis to conclude there were \textbf{four classes}: $C-$, $S-$ $V-$, and $Q-$ classes \cite{binzal_colors}.
+    \item \textit{SDSS-based taxonomic classification and orbital distribution of main belt asteroids} (2009): Used templates of what different classes ``should look like'', applied supervised learning, and concluded there were \textbf{sixteen classes} \cite{Carvano}.
+    % If you notice a huge jump, you aren't alone. Carvano's results were far better than any other study to date that just uses the SDSS.
+    % Some of the professors here doubt the validity of Carvano's study, and think that he overfit his data in order to maximize the number of unique classes.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{What We're Doing}
+
+We plan to use at least a K-Means++ algorithm and Carvano's data correction methods to see if we can reasonably replicate his results using only unsupervised learning.
+\begin{itemize}
+    \item If we keep the growth trend from before, we might find out that there are actually 256 classes.
+    \item More realistically, we expect to find that there are less than sixteen classes.
+    \item It is the belief of some professors here that it is only possible to identify five or six, given the kind of color information in the database.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{References}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{frame}
+
+
+\end{document}
